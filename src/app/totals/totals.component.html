@@ -1,0 +1,37 @@
+<!-- item component -->
+<table>
+  <tr class="heading">
+    <td>
+      Items
+    </td>
+
+    <td class="align-right">
+      Hours Worked
+    </td>
+    <td class="align-right">
+      Hourly Rate
+    </td>
+    <td class="align-right">
+      Total
+    </td>
+  </tr>
+  <!-- total component -->
+  <tbody id="tableStuff">
+    <tr class="item" *ngFor="let item of ksDataInfo">
+      <td>{{ item.name }}</td>
+      <td class="align-right">{{ item.hours }}</td>
+      <td class="align-right">{{ item.hourlyRate | currency }}</td>
+      <td class="align-right">{{ item.hours * item.hourlyRate |
+        currency }}</td>
+    </tr>
+  </tbody>
+</table>
+<!-- Total Hours -->
+<div>Total Hours: {{ ksCalculateTotalHours() }}</div>
+<!-- Subtotal -->
+<div class="subtotal align-right">Subtotal: {{ ksCalculateSubtotal() | currency }}</div>
+<!-- Taxes -->
+<div class="taxes align-right">Taxes (13%): {{ ksCalculateTaxes() | currency }}</div>
+<!-- Total -->
+<div class="total align-right">Total: {{ksCalculateSubtotal() + ksCalculateTaxes() | currency}}
+</div>

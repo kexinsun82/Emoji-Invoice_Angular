@@ -1,0 +1,7 @@
+<div class="invoice-box">
+  Item: <input [(ngModel)]="ksAddItemInput" type="text" name="item" style="width: 150px;">
+  Hours: <input #ksLocalHours type="number" style="width: 70px" name="hours">
+  Hourly Rate: <input #ksLocalHourlyRate type="number" style="width: 70px; margin-right: 10px;" name="hourly rate">
+
+  <button (click)="ksAddHoursItem()">Add Hours</button>
+</div>

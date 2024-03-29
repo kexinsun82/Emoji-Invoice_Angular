@@ -1,0 +1,46 @@
+<app-add-item (ksAddNewItem)="ksAddItemToInvoiceItems($event)"></app-add-item>
+
+<div class="invoice-box">
+  <app-header [ksMainImage]="ksMainImage" [ksInvoiceData]="ksInvoiceData">
+  </app-header>
+
+  <div class="invoice-box">
+    <table>
+      <tr class="heading">
+        <td colspan="3">
+          Payment Method
+        </td>
+
+        <td>
+          Payment Types Accepted
+        </td>
+      </tr>
+
+      <tr class="details">
+        <td *ngIf="ksSelectedPaymentType === 'Cash'" colspan="3">
+          Cash
+        </td>
+        <td *ngIf="ksSelectedPaymentType === 'Credit Card'" colspan="3">
+          Credit Card<br>
+          We do not accept AMEX
+        </td>
+        <td *ngIf="ksSelectedPaymentType === 'BitCoin'" colspan="3">
+          BitCoin
+        </td>
+        <td *ngIf="ksSelectedPaymentType === 'Interact'" colspan="3">
+          Interact
+        </td>
+        <td>
+          <select [(ngModel)]="ksSelectedPaymentType" (change)="ksOnPaymentTypeChange()">
+            <option *ngFor="let paymentType of ksInvoiceData.ksPaymentType">
+              {{ paymentType }}
+            </option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <app-totals [ksDataInfo]="ksInvoiceData.ksInvoiceItems"></app-totals>
+
+  </div>
+</div>
